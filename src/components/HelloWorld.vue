@@ -5,6 +5,7 @@
     <h2>
       <router-link to="/lazy">lazy</router-link>
       <router-link to="/echarts">echarts</router-link>
+      <router-link to="/login">login</router-link>
     </h2>
     <h2>
       <button @click="httpClick">http 位置请求</button>

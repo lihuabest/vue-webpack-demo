@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="@/assets/logo.png">
+    <!--<img src="@/assets/logo.png">-->
     <vue-progress-bar></vue-progress-bar>
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
@@ -42,12 +42,12 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
+  font-family: Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased; /* 抗锯齿 mac下才有效 */
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .2s ease;
