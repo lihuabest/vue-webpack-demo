@@ -39,8 +39,4 @@ Axios.interceptors.response.use(res => {
   console.log(err)
 })
 
-export default {
-  install: function (Vue) {
-    Object.defineProperty(Vue.prototype, '$http', {value: Axios})
-  }
-}
+export default Axios

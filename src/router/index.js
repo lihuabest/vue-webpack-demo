@@ -4,9 +4,11 @@ import HelloWorld from '@/components/HelloWorld'
 import Echarts from '@/components/Echarts'
 import Login from '@/components/login/Login'
 
+import auth from '../services/auth'
+
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -31,3 +33,18 @@ export default new Router({
   ],
   mode: 'history'
 })
+
+router.beforeEach((route, redirect, next) => {
+  if (!auth.loggedIn() && route.path !== '/login') {
+    next({
+      path: '/login',
+      query: {
+        redirect: encodeURIComponent(route.fullPath)
+      }
+    })
+  } else {
+    next()
+  }
+})
+
+export default router

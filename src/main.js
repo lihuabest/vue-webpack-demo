@@ -22,7 +22,7 @@ Vue.use(VueProgressBar, {
 })
 
 // 注册http请求组件
-Vue.use(axios)
+Vue.prototype.$http = axios
 
 // 注册图表组件
 Vue.prototype.$echarts = echarts

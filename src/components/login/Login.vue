@@ -6,10 +6,10 @@
         <li class="input-container">
           <!--这行代码是去除chrome表单的自动填充-->
           <input type="password" style="display: none;">
-          <input type="text" autocomplete="off" placeholder="请输入用户名" v-placeholder>
+          <input type="text" autocomplete="off" placeholder="请输入用户名" v-model="username" v-placeholder>
         </li>
         <li class="input-container">
-          <input type="password" autocomplete="new-password" placeholder="请输入用户密码" v-placeholder>
+          <input type="password" autocomplete="new-password" placeholder="请输入用户密码" v-model="password" v-placeholder>
         </li>
         <li class="input-container">
           <div class="line">
@@ -18,7 +18,7 @@
           </div>
         </li>
         <li class="input-container">
-          <div class="btn">登录</div>
+          <div class="btn" @click="loginClick()">登录</div>
         </li>
       </ul>
     </div>
@@ -26,11 +26,21 @@
 </template>
 
 <script>
+import auth from '../../services/auth'
+
 export default {
   name: 'Login',
-  data: () => {
+  data () {
     return {
-
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    loginClick () {
+      console.log(auth)
+      // console.log(this.username)
+      // console.log(this.password)
     }
   }
 }
