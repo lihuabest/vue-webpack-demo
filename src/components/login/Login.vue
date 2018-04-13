@@ -54,13 +54,17 @@ export default {
     position: relative;
   }
   .login-aside-container {
+    background: rgba(#fff, 0.9);
+    box-shadow: 20px 0 40px 0 rgba(6,45,61,0.30);
     width: 30%;
-    min-width: 320px;
-    background: rgba(#fff, .9);
+    height: 70%;
+    min-width: 380px;
+    min-height: 590px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
+
     .logo {
       height: 240px;
       margin: 100px 0 30px 0;
@@ -73,7 +77,8 @@ export default {
       >input {
         background: transparent;
         border: none;
-        box-shadow: inset 0 -1px 0 0 #DFE2E7;
+        /*box-shadow: inset 0 -1px 0 0 #DFE2E7;*/
+        border-bottom: 1px solid #DFE2E7;
         padding: 5px;
         font-size: 14px;
         width: 50%;
@@ -81,18 +86,16 @@ export default {
         transition: all 0.2s;
         &::-moz-placeholder {
           color: #C4C4C4;
-          font-size: 12px;
         }
         &:-ms-input-placeholder {
           color: #C4C4C4;
-          font-size: 12px;
         }
         &::-webkit-input-placeholder {
           color: #C4C4C4;
-          font-size: 12px;
         }
-        &:focus {
-          box-shadow: inset 0 -1px 0 0 #73859F;
+        &:focus, &:hover {
+          /*box-shadow: inset 0 -1px 0 0 #73859F;*/
+          border-bottom-color: #73859F;
         }
       }
       >div {

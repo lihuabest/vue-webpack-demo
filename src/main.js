@@ -8,8 +8,8 @@ import router from './router'
 import axios from './services/base'
 import directives from './directives/directives'
 
-// 直接引入scss文件
-import './assets/styles/_all.scss'
+// 直接引入scss文件 改为了在 build/utils.js 里用sass-resources-loader来统一加载公共sass
+// import './assets/styles/_all.scss'
 
 // 注册指令集合
 directives.install(Vue)

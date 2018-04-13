@@ -48,6 +48,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   height: 100%;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .2s ease;
