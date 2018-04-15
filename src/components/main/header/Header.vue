@@ -1,23 +1,25 @@
 <template>
   <div class="header-container">
-    <ul class="header-navi-container">
-      <li>
-        <i class="iconfont icon-ico_safeschool"></i>
-        <div>首页</div>
-      </li>
-      <li>
-        <i class="iconfont icon-ico_settings"></i>
-        <div>控制面板</div>
-      </li>
-      <li>
-        <i class="iconfont icon-ico_authorization"></i>
-        <div>权限管理</div>
-      </li>
-      <li>
-        <i class="iconfont icon-ico_logout1"></i>
-        <div>退出</div>
-      </li>
-    </ul>
+    <div>
+      <ul class="header-navi-container">
+        <li>
+          <i class="iconfont icon-ico_safeschool"></i>
+          <div>首页</div>
+        </li>
+        <li>
+          <i class="iconfont icon-ico_settings"></i>
+          <div>控制面板</div>
+        </li>
+        <li>
+          <i class="iconfont icon-ico_authorization"></i>
+          <div>权限管理</div>
+        </li>
+        <li>
+          <i class="iconfont icon-ico_logout1"></i>
+          <div>退出</div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -35,11 +37,14 @@ export default {
 <style scoped rel="stylesheet/scss" lang="scss">
   .header-container {
     height: $headerHeight;
-    background: $basicColor;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
+    > div {
+      height: $headerHeight;
+      background: $basicColor;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
   }
   .header-navi-container {
     float: right;

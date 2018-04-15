@@ -29,6 +29,7 @@ module.exports = {
     'no-multi-spaces': 'off',
     // 多余的空白
     'no-trailing-spaces': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'object-property-newline': 'off'
   }
 }

@@ -41,20 +41,23 @@ export default {
 </script>
 
 <style>
-#app {
-  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-  font-family: Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing: antialiased; /* 抗锯齿 mac下才有效 */
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  height: 100%;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .2s ease;
-}
-.fade-enter, .fade-leave-active {
-  opacity: 0
-}
+  #app {
+    /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
+    font-family: Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased; /* 抗锯齿 mac下才有效 */
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    height: 100%;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .2s ease;
+  }
+  .collapse-transition {
+    transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out;
+  }
 </style>

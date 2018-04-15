@@ -1,28 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Echarts from '@/components/Echarts'
 import Login from '@/components/login/Login'
 import Main from '@/components/main/Main'
-import Attendance from '@/components/campus/attendance/Attendance'
-import Education from '@/components/campus/education/Education'
 
-import auth from '../services/auth'
+import auth from '@/services/auth'
+import Pie from '@/components/charts/echarts/Pie'
 
 Vue.use(Router)
 
 const router = new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld
-    // },
-    // {
-    //   path: '/echarts',
-    //   name: 'Echarts',
-    //   component: Echarts
-    // },
     // {
     //   path: '/lazy',
     //   name: 'LazyLoad',
@@ -39,14 +26,9 @@ const router = new Router({
       component: Main,
       children: [
         {
-          path: '/attendance',
-          name: 'Main.Attendance',
-          component: Attendance
-        },
-        {
-          path: '/education',
-          name: 'Main.Education',
-          component: Education
+          path: '/charts/echarts/pie',
+          name: 'EchartsPie',
+          component: Pie
         }
       ]
     }
