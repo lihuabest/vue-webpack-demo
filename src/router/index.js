@@ -5,6 +5,7 @@ import Main from '@/components/main/Main'
 
 import auth from '@/services/auth'
 import Pie from '@/components/charts/echarts/Pie'
+import Jsplumb from '@/components/jsplumb/Jsplumb'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ const router = new Router({
           path: '/charts/echarts/pie',
           name: 'EchartsPie',
           component: Pie
+        },
+        {
+          path: '/jsplumb',
+          name: 'Jsplumb',
+          component: Jsplumb
         }
       ]
     }

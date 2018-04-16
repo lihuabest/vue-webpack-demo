@@ -14,14 +14,9 @@
 </template>
 
 <script>
-import CollapseTransition from '@/animations/collapse.transition/CollapseTransition'
-
 export default {
   name: 'Tree',
   props: ['index', 'navigations', 'navigationsAll', 'navigationsParent'],
-  components: {
-    CollapseTransition
-  },
   data () {
     return {
 
@@ -40,7 +35,7 @@ export default {
       if (leaf.children && leaf.children.length) {
         leaf.expand = !leaf.expand
       } else if (leaf.link) {
-        this.$router.push({ name: 'EchartsPie' })
+        this.$router.push({ path: leaf.link })
         leaf.checked = true
       }
     }

@@ -29,5 +29,6 @@ export default {
   }
   .main-content-container {
     margin-left: $sidebarWidth;
+    height: calc(100% - #{$headerHeight}); // 这里的scss有点奇怪
   }
 </style>

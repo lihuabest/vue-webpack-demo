@@ -30,6 +30,12 @@ module.exports = {
     // 多余的空白
     'no-trailing-spaces': 'off',
     'no-unused-vars': 'off',
-    'object-property-newline': 'off'
+    'object-property-newline': 'off',
+    // 箭头函数禁止返回复制语句 关闭
+    'no-return-assign': 'off',
+    // var只能定义一个变量
+    'one-var': 'off',
+    // 禁止在表达式中使用赋值语句
+    'no-cond-assign': 'off'
   }
 }
