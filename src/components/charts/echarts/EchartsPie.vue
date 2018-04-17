@@ -15,7 +15,7 @@
 import {EchartPieConfig} from '@/components/charts/echarts/config'
 
 export default {
-  name: 'Pie',
+  name: 'EchartsPie',
   mounted () {
     this.draw()
   },

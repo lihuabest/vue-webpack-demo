@@ -3,7 +3,8 @@
  */
 export default [
   { name: 'charts', icon: '', link: '', checked: false, expand: true, children: [
-    {name: 'echarts.pie', icon: '', link: '/charts/echarts/pie', checked: false, expand: false, children: []}
+    {name: 'echarts.pie', icon: '', link: '/charts/echarts/pie', checked: false, expand: false, children: []},
+    {name: 'echarts.line', icon: '', link: '/charts/echarts/line', checked: false, expand: false, children: []}
   ]},
   {name: 'jsplumb', icon: '', link: '/jsplumb', checked: false, expand: false, children: []}
   // ,
