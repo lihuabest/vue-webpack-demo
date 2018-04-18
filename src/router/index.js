@@ -7,6 +7,7 @@ import auth from '@/services/auth'
 import EchartsPie from '@/components/charts/echarts/EchartsPie'
 import EchartsLine from '@/components/charts/echarts/EchartsLine'
 import Jsplumb from '@/components/jsplumb/Jsplumb'
+import Dynamic from '@/components/componnet/dynamic/Dynamic'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ const router = new Router({
           path: '/jsplumb',
           name: 'Jsplumb',
           component: Jsplumb
+        },
+        {
+          path: '/component/dynamic',
+          name: 'Dynamic',
+          component: Dynamic
         }
       ]
     }

@@ -1,6 +1,8 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import Rx from 'rxjs/Rx'
+import VueRx from 'vue-rx'
 import echarts from 'echarts'
 import VueProgressBar from 'vue-progressbar'
 import jsplumb from 'jsplumb'
@@ -9,10 +11,14 @@ import router from '@/router/index'
 import axios from '@/services/base'
 import directives from '@/directives/directives'
 import tools from '@/tools/_all'
-import CollapseTransition from '@/animations/collapse.transition/CollapseTransition'
+import CollapseTransition from '@/commons/collapse.transition/CollapseTransition'
+import Modal from '@/commons/modal/Modal.js'
 
 // 直接引入scss文件 改为了在 build/utils.js 里用sass-resources-loader来统一加载公共sass
 // import './assets/styles/_all.scss'
+
+// 注册rxjs
+Vue.use(VueRx, { Rx })
 
 // 注册指令集合
 directives.install(Vue)
@@ -38,6 +44,9 @@ Vue.prototype.$jsplumb = jsplumb.jsPlumb
 
 // 注册公共动画组件
 Vue.component('CollapseTransition', CollapseTransition)
+
+// 注册公共模态框
+Vue.prototype.$modal = Modal
 
 Vue.config.productionTip = false
 
