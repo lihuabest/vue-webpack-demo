@@ -1,4 +1,4 @@
-import placeholder from './placeholder'
+import placeholder from '@/directives/placeholder'
 
 /**
  * directives注册函数

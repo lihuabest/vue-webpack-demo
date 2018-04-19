@@ -5,7 +5,7 @@
         <span class="tree-title" v-bind:class="{ checked: navigation.checked }" v-bind:style="{ paddingLeft: left }" @click="toggle(navigation)">{{ navigation.name }}</span>
         <CollapseTransition>
           <template v-if="navigation.children && navigation.children.length && navigation.expand">
-            <Tree :index="index + 1" :navigations="navigation.children"></Tree>
+            <Tree :index="index + 1" :navigations="navigation.children" :navigations-all="navigationsAll"></Tree>
           </template>
         </CollapseTransition>
       </li>
@@ -18,12 +18,7 @@ export default {
   name: 'Tree',
   props: ['index', 'navigations', 'navigationsAll', 'navigationsParent'],
   data () {
-    return {
-
-    }
-  },
-  created () {
-
+    return {}
   },
   computed: {
     left () {
@@ -32,6 +27,16 @@ export default {
   },
   methods: {
     toggle (leaf) {
+      // 第一步 删除其余选中项
+      this.$tools.tree.treesTraverse(this.navigationsAll, {
+        callback: l => {
+          if (l !== leaf) {
+            l.checked = false
+          }
+        }
+      })
+
+      // 第二步 选中展开子集或者反选自身
       if (leaf.children && leaf.children.length) {
         leaf.expand = !leaf.expand
       } else if (leaf.link) {

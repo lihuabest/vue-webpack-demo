@@ -1,14 +1,29 @@
 <template>
   <div class="pl30 pt30 pr30">
+
     <div ref="extendRef">
       <button @click="extendClick">extend</button>
     </div>
     <div>
       <pre v-text="extendHtml"></pre>
     </div>
+
     <div>
       <button @click="modalClick">modal</button>
     </div>
+    <div>
+      <p class="mt10">直接定义可复用的模态组件，按钮点击事件通过rxjs的subject事件系统传递</p>
+      <pre v-text="modalHtml"></pre>
+    </div>
+
+    <div>
+      <button @click="modalComponentClick">modal component</button>
+    </div>
+    <div>
+      <p class="mt10">模态组件内部 动态新增子组件</p>
+      <pre v-text="modalComponent"></pre>
+    </div>
+
   </div>
 </template>
 
@@ -33,11 +48,41 @@ this.$refs.extendRef.appendChild(div)
 new Profile().$mount(div)
 `
 
+const modalHtml = `let ins = this.$modal({
+  title: 'modal title'
+})
+
+ins.clickOkEventSubject.subscribe(() => {
+  console.log('ok click')
+  ins.destroy()
+})
+`
+
+const modalComponent = `let ins = this.$modal({
+  title: 'modal component title',
+  component: {
+    template: '<p>this is {{message}}.</p>',
+    data: function () {
+      return {
+        message: 'child component'
+      }
+    }
+  }
+})
+
+ins.clickOkEventSubject.subscribe(() => {
+  console.log(ins.$componentInstance.message)
+  ins.destroy()
+})
+`
+
 export default {
   name: 'Dynamic',
   data () {
     return {
-      extendHtml
+      extendHtml,
+      modalHtml,
+      modalComponent
     }
   },
   methods: {
@@ -65,11 +110,29 @@ export default {
         title: 'modal title'
       })
 
-      ins.clickEventsSubject.subscribe(data => {
-        console.log(data)
+      ins.clickOkEventSubject.subscribe(() => {
+        console.log('ok click')
+        ins.destroy()
+      })
+    },
+
+    modalComponentClick () {
+      let ins = this.$modal({
+        title: 'modal component title',
+        component: {
+          template: '<p>this is {{message}}.</p>',
+          data: function () {
+            return {
+              message: 'child component'
+            }
+          }
+        }
       })
 
-      console.log(ins)
+      ins.clickOkEventSubject.subscribe(() => {
+        console.log(ins.$componentInstance.message)
+        ins.destroy()
+      })
     }
   }
 }

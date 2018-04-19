@@ -17,9 +17,6 @@ export default {
     return {
       navigations
     }
-  },
-  created () {
-
   }
 }
 </script>

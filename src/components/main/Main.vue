@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Header from './header/Header'
-import Aside from './aside/Aside'
+import Header from '@/components/main/header/Header'
+import Aside from '@/components/main/aside/Aside'
 
 export default {
   name: 'Main',
@@ -30,5 +30,6 @@ export default {
   .main-content-container {
     margin-left: $sidebarWidth;
     height: calc(100% - #{$headerHeight}); // 这里的scss有点奇怪
+    overflow: auto;
   }
 </style>

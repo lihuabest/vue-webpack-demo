@@ -1,19 +1,26 @@
 <template>
-  <div class="modal-container">
-    <div class="modal-content-container" v-bind:style="{ width: options.width + 'px', height: options.height + 'px', marginLeft: (-options.width / 2) + 'px', marginTop: (-options.height / 2) + 'px' }">
-      <div class="title">
-        <span class="ml10">{{options.title}}</span>
-        <i class="iconfont icon-ico_tab_close close" @click="closeClick"></i>
-      </div>
-      <div class="btns">
-        <button v-for="(btn, index) in options.btns" v-bind:class="btn.clas" :key="index" @click="btnClick(btn)">{{ btn.label }}</button>
-      </div>
+    <div class="modal-container">
+      <transition name="fade" v-on:after-leave="afterLeave">
+        <div v-if="show">
+          <div class="modal-content-container" v-bind:style="{ width: options.width + 'px', height: options.height + 'px', marginLeft: (-options.width / 2) + 'px', marginTop: (-options.height / 2) + 'px' }">
+            <div class="title">
+              <span class="ml10">{{options.title}}</span>
+              <i class="iconfont icon-ico_tab_close close" @click="closeClick"></i>
+            </div>
+            <div class="content" ref="contentRef"></div>
+            <div class="btns">
+              <button v-for="(btn, index) in options.btns" v-bind:class="btn.clas" :key="index" @click="btnClick(btn)">{{ btn.label }}</button>
+            </div>
+          </div>
+        </div>
+      </transition>
     </div>
-  </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import { Subject } from 'rxjs/Subject'
+
 export default {
   name: 'Modal',
   data () {
@@ -22,6 +29,7 @@ export default {
         title: '',
         width: 300,
         height: 180,
+
         btns: [
           {
             label: '取消',
@@ -34,18 +42,60 @@ export default {
           }
         ]
       },
-      clickEventsSubject: new Subject()
+      clickCloseEventSubject: new Subject(),
+      clickCancelEventSubject: new Subject(),
+      clickOkEventSubject: new Subject(),
+      clickEventsSubject: new Subject(),
+      show: false,
+      $componentInstance: null
     }
   },
   mounted () {
-    // console.log(this.options)
+    this.show = true
+
+    if (this.options.component) {
+      setTimeout(() => {
+        this.initComponent()
+      })
+    }
   },
   methods: {
     closeClick () {
-      this.clickEventsSubject.next('$close')
+      this.btnClick({ type: '$close' })
     },
     btnClick (btn) {
+      switch (btn.type) {
+        case '$close':
+          this.clickCloseEventSubject.next()
+          this.destroy()
+          break
+        case '$cancel':
+          this.clickCancelEventSubject.next()
+          this.destroy()
+          break
+        case '$ok':
+          this.clickOkEventSubject.next()
+          break
+      }
+
       this.clickEventsSubject.next(btn.type)
+    },
+    destroy () {
+      this.show = false
+    },
+    afterLeave () {
+      this.$el.parentNode.removeChild(this.$el)
+      this.$destroy()
+    },
+    initComponent () {
+      let Profile = Vue.extend(this.options.component)
+
+      let div = document.createElement('div')
+      this.$refs.contentRef.appendChild(div)
+      let componentInstance = new Profile()
+      componentInstance.$mount(div)
+
+      this.$componentInstance = componentInstance
     }
   }
 }
@@ -59,7 +109,10 @@ export default {
     right: 0;
     bottom: 0;
     z-index: 9999;
-    background: rgba($basicColor, .4);
+    > div {
+      height: 100%;
+      background: rgba($basicColor, .4);
+    }
     .modal-content-container {
       background: rgba($basicHighLightColor, .9);
       border-radius: 4px;
@@ -78,6 +131,9 @@ export default {
         &:hover {
           color: rgba($basicColor, .9);
         }
+      }
+      .content {
+        padding: 10px;
       }
       .btns {
         width: 100%;

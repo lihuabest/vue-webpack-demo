@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import JsplumbTool from './Jsplumb.tool'
+import JsplumbTool from '@/components/jsplumb/Jsplumb.tool'
 
 export default {
   name: 'Jsplumb',

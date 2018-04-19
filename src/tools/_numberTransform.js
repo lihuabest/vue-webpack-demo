@@ -1,3 +1,9 @@
+/**
+ * 数据转换 1234 -> 1,234
+ * @param value
+ * @param connector
+ * @returns {any}
+ */
 export default (value, connector = ',') => {
   value = value + ''
 
