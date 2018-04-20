@@ -38,9 +38,15 @@ export default {
   },
   methods: {
     loginClick () {
-      console.log(auth)
-      // console.log(this.username)
-      // console.log(this.password)
+      if (!this.$store.state.login.isLogin) {
+        this.$store.commit('setIsLogin', true)
+        // this.$route.params
+        // this.$route.query
+        // 从查询字符串里拿出成功登录后的跳转地址
+        let redirect = this.$route.query.redirect ? decodeURIComponent(this.$route.query.redirect) : '/'
+        this.$router.push({ path: redirect })
+        window.sessionStorage.setItem('login', 'true')
+      }
     }
   }
 }

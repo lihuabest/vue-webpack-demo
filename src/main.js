@@ -10,6 +10,7 @@ import echarts from 'echarts'
 import VueProgressBar from 'vue-progressbar'
 import jsplumb from 'jsplumb'
 import App from '@/App'
+import store from '@/store/index'
 import router from '@/router/index'
 import axios from '@/services/base'
 import directives from '@/directives/directives'
@@ -59,6 +60,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store, // 注册store
   router,
   components: { App },
   template: '<App/>'

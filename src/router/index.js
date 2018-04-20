@@ -24,7 +24,7 @@ const router = new Router({
       component: Login
     },
     {
-      path: '',
+      path: '/',
       name: 'Main',
       component: Main,
       children: [
@@ -55,13 +55,17 @@ const router = new Router({
 })
 
 router.beforeEach((route, redirect, next) => {
-  if (!auth.loggedIn() && route.path !== '/login') {
-    // next({
-    //   path: '/login',
-    //   query: {
-    //     redirect: encodeURIComponent(route.fullPath)
-    //   }
-    // })
+  if (!router.app.$store.state.login.isLogin && route.path !== '/login') {
+    if (!auth.loggedIn()) {
+      next({
+        path: '/login',
+        query: {
+          redirect: encodeURIComponent(route.fullPath)
+        }
+      })
+    } else {
+      next()
+    }
     next()
   } else {
     next()

@@ -2,19 +2,19 @@
   <div class="header-container">
     <div>
       <ul class="header-navi-container">
-        <li>
-          <i class="iconfont icon-ico_safeschool"></i>
-          <div>首页</div>
-        </li>
-        <li>
-          <i class="iconfont icon-ico_settings"></i>
-          <div>控制面板</div>
-        </li>
-        <li>
-          <i class="iconfont icon-ico_authorization"></i>
-          <div>权限管理</div>
-        </li>
-        <li>
+        <!--<li>-->
+          <!--<i class="iconfont icon-ico_safeschool"></i>-->
+          <!--<div>首页</div>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<i class="iconfont icon-ico_settings"></i>-->
+          <!--<div>控制面板</div>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<i class="iconfont icon-ico_authorization"></i>-->
+          <!--<div>权限管理</div>-->
+        <!--</li>-->
+        <li @click="logout">
           <i class="iconfont icon-ico_logout1"></i>
           <div>退出</div>
         </li>
@@ -27,8 +27,13 @@
 export default {
   name: 'Header',
   data () {
-    return {
-
+    return {}
+  },
+  methods: {
+    logout () {
+      this.$store.commit('setIsLogin', false)
+      this.$router.push({ path: '/login' })
+      window.sessionStorage.removeItem('login')
     }
   }
 }
