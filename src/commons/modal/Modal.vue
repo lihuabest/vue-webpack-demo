@@ -66,15 +66,15 @@ export default {
     btnClick (btn) {
       switch (btn.type) {
         case '$close':
-          this.clickCloseEventSubject.next()
+          this.clickCloseEventSubject.next(this.$componentInstance)
           this.destroy()
           break
         case '$cancel':
-          this.clickCancelEventSubject.next()
+          this.clickCancelEventSubject.next(this.$componentInstance)
           this.destroy()
           break
         case '$ok':
-          this.clickOkEventSubject.next()
+          this.clickOkEventSubject.next(this.$componentInstance)
           break
       }
 

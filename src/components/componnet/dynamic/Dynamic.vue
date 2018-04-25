@@ -24,11 +24,20 @@
       <pre v-text="modalComponent"></pre>
     </div>
 
+    <div>
+      <button @click="modalTableComponentClick">modal table component</button>
+    </div>
+    <div>
+      <p class="mt10">模态组件映入外部组件 DynamicTable, 动态新增子组件</p>
+      <pre v-text="modalTableComponent"></pre>
+    </div>
+
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import DynamicTable from '@/components/componnet/dynamic/Dynamic.Table'
 
 const extendHtml = `let Profile = Vue.extend({
   template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
@@ -76,13 +85,29 @@ ins.clickOkEventSubject.subscribe(() => {
 })
 `
 
+const modalTableComponent = `import DynamicTable from '@/components/componnet/dynamic/Dynamic.Table'
+
+let ins = this.$modal({
+  title: '用户列表',
+  component: DynamicTable,
+  width: 600,
+  height: 350
+})
+
+ins.clickOkEventSubject.subscribe(instance => {
+  console.dir(JSON.parse(JSON.stringify(instance.lists)))
+  ins.destroy()
+})
+`
+
 export default {
   name: 'Dynamic',
   data () {
     return {
       extendHtml,
       modalHtml,
-      modalComponent
+      modalComponent,
+      modalTableComponent
     }
   },
   methods: {
@@ -132,6 +157,21 @@ export default {
       ins.clickOkEventSubject.subscribe(() => {
         console.log(ins.$componentInstance.message)
         ins.destroy()
+      })
+    },
+
+    modalTableComponentClick () {
+      let ins = this.$modal({
+        title: '用户列表',
+        component: DynamicTable,
+        width: 600,
+        height: 350
+      })
+
+      ins.clickOkEventSubject.subscribe(instance => {
+        console.dir(JSON.parse(JSON.stringify(instance.lists)))
+        ins.destroy()
+        ins = null
       })
     }
   }
