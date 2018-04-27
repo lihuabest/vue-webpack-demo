@@ -8,7 +8,8 @@ export default [
   ]},
   {name: 'jsplumb', icon: '', link: '/jsplumb', checked: false, expand: false, children: []},
   {name: 'component', icon: '', link: '', checked: false, expand: false, children: [
-    {name: 'dynamic', icon: '', link: '/component/dynamic', checked: false, expand: false, children: []}
+    {name: 'dynamic', icon: '', link: '/component/dynamic', checked: false, expand: false, children: []},
+    {name: 'flex', icon: '', link: '/component/flex', checked: false, expand: false, children: []}
   ]}
   // ,
   // {name: '导航3', icon: '', link: '', checked: false, expand: false, children: []}

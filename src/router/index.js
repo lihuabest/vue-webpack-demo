@@ -8,6 +8,7 @@ import EchartsPie from '@/components/charts/echarts/EchartsPie'
 import EchartsLine from '@/components/charts/echarts/EchartsLine'
 import Jsplumb from '@/components/jsplumb/Jsplumb'
 import Dynamic from '@/components/componnet/dynamic/Dynamic'
+import Flex from '@/components/componnet/flex/Flex'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ const router = new Router({
           path: '/component/dynamic',
           name: 'Dynamic',
           component: Dynamic
+        },
+        {
+          path: '/component/flex',
+          name: 'Flex',
+          component: Flex
         }
       ]
     }
