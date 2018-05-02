@@ -11,7 +11,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const bundleConfig = require("../static/js/bundle-config.json")
+const dllConfig = require('../static/js/dll.conf.json')
+const polyfillsConfig = require('../static/js/polyfills.conf.json')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -70,7 +71,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         : config.build.index,
       template: 'index.html',
       inject: true,
-      libJsName: bundleConfig.vendor.js,
+      liberiesConfig: dllConfig.dll.js,
+      polyfillsConfig: polyfillsConfig.polyfills.js,
       minify: {
         removeComments: true,
         collapseWhitespace: true,

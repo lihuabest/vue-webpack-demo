@@ -5,7 +5,7 @@
   "author": "lihua <lihuabest@qq.com>",
   "private": true,
   "scripts": {
-    "build.dll": "rimraf ./static/js && webpack --config build/webpack.dll.conf.js",
+    "pre": "rimraf ./static/js && webpack --config build/webpack.dll.conf.js && webpack --config build/webpack.polyfills.conf.js",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "classlist.js": "^1.1.20150312",
     "echarts": "^4.0.4",
     "jsplumb": "^2.6.9",
     "rxjs": "^5.5.10",
@@ -38,6 +39,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.3.2",
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",

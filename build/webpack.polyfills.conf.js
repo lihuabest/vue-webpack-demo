@@ -4,13 +4,10 @@ const AssetsPlugin = require('assets-webpack-plugin')
 
 module.exports = {
   entry: {
-    dll: [
-      'vue/dist/vue.esm.js',
-      'vue-router',
-      'vue-progressbar',
-      'jsplumb',
-      'axios',
-      'echarts'
+    // 只是简单的文件合并 不是动态链接库的形式
+    polyfills: [
+      path.join(__dirname, '../node_modules/babel-polyfill/dist/polyfill.js'),
+      path.join(__dirname, '../node_modules/classlist.js/classList.js')
     ]
   },
   output: {
@@ -19,18 +16,13 @@ module.exports = {
     library: '[name]_library'
   },
   plugins: [
-    new webpack.DllPlugin({
-      path: path.join(__dirname, '../static/js', '[name].manifest.json'),
-      name: '[name]_library',
-      context: __dirname
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
     }),
     new AssetsPlugin({
-      filename: 'dll.conf.json',
+      filename: 'polyfills.conf.json',
       path: path.join(__dirname, '../static/js')
     })
   ]

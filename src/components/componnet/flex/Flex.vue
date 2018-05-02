@@ -1,12 +1,31 @@
 <template>
-  <div>
-    <div class="box">
-      <div class="item">1</div>
-      <div class="item">2</div>
-      <div class="item">3</div>
-      <div class="item">4</div>
-      <div class="item">5</div>
-    </div>
+  <div class="container">
+      <div class="phone">
+        <div class="header">
+          <span class="item">
+            <i class="iconfont icon-icon--"></i>
+            <input type="text">
+          </span>
+          <span class="item">
+            <i class="iconfont icon-fenlei"></i>
+          </span>
+        </div>
+        <div class="content">123</div>
+        <div class="footer">
+          <div class="item">
+            <i class="iconfont icon-meishidashengjianjiao"></i>
+            <div>推荐</div>
+          </div>
+          <div class="item">
+            <i class="iconfont icon-palette"></i>
+            <div>广场</div>
+          </div>
+          <div class="item">
+            <i class="iconfont icon-wo"></i>
+            <div>我的</div>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -17,41 +36,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .box {
-    height: 200px;
-    background: #58a;
-    display: flex;
+  .container {
+    height: 100%;
+    .phone {
+      width: 375px;
+      height: 667px;
+      margin: 0 auto;
+      position: relative;
+      top: 50px;
+      border: 1px solid #dedede;
+      display: flex;
+      flex-flow: row wrap;
+      >div {
+        /*flex: 1 100%;*/
+      }
+      .footer {
 
-    /*flex-direction 子项的排列顺序*/
-    /*flex-direction: row;*/
-    /*flex-direction: row-reverse;*/
-    /*flex-direction: column;*/
-    /*flex-direction: column-reverse;*/
-
-    /*flex-wrap 子项换行方式*/
-    /*flex-wrap: nowrap; // 默认值 不换行*/
-    /*flex-wrap: wrap;*/
-    /*flex-wrap: wrap-reverse;*/
-
-    /*flex-direction flex-wrap两个属性的复合属性*/
-    flex-flow: wrap;
-
-    /*水平方向上flex子项的对齐方式*/
-    /*justify-content: flex-start;*/ // 默认左对齐
-    /*justify-content: flex-end;*/   // 右对齐
-    /*justify-content: center;       // 居中对齐*/
-    /*justify-content: space-between;  // 两端对齐*/
-    /*justify-content: space-around;  // 两端等距对齐*/
-
-    /*垂直方向上flex子项对齐方式*/
-    align-items: stretch;
-
-    .item {
-      width: 50px;
-      /*height: 50px;*/
-      margin: 2px;
-      background: #fb3;
-      display: inline-block;
+      }
     }
   }
 </style>

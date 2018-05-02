@@ -93,7 +93,7 @@ module.exports = {
   plugins: [
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require(path.join(__dirname, '../static/js/vendor-manifest.json')) // 指向生成的manifest.json
+      manifest: require(path.join(__dirname, '../static/js/dll.manifest.json')) // 指向生成的manifest.json
     })
   ]
 }

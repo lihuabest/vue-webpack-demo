@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>vue-webpack-demo</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
-    <script src="/static/js/<%= htmlWebpackPlugin.options.libJsName %>"></script>
+    <script>
+      // polyfills for IE
+      if (!!window.ActiveXObject || "ActiveXObject" in window) {
+        var s =document.createElement('script');
+        s.src = "/static/js/<%= htmlWebpackPlugin.options.polyfillsConfig %>";
+        document.head.appendChild(s);
+      }
+    </script>
+    <script src="/static/js/<%= htmlWebpackPlugin.options.liberiesConfig %>"></script>
   </head>
   <body>
     <div id="app"></div>

@@ -10,7 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-const bundleConfig = require("../static/js/bundle-config.json")
+const dllConfig = require('../static/js/dll.conf.json')
+const polyfillsConfig = require('../static/js/polyfills.conf.json')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -58,7 +59,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       inject: true,
-      libJsName: bundleConfig.vendor.js
+      liberiesConfig: dllConfig.dll.js,
+      polyfillsConfig: polyfillsConfig.polyfills.js
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
