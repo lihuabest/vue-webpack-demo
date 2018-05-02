@@ -2,16 +2,16 @@
 
 运行步骤
 
-第一步，按照依赖
+第一步，安装依赖
 ```sh
   npm install
 ```
 
-第二步，生成dll文件
+第二步，生成dll文件和ployfill文件
 
 生成dll文件，参考文章 https://juejin.im/entry/598bcbc76fb9a03c5754d211
 ```sh
-  npm run build.dll
+  npm run pre
 ```
 
 第三步，开发运行
